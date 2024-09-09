@@ -1,7 +1,7 @@
 ---
 - name: Install Docker on Ubuntu
   hosts: all
-  become: yes
+  become: true
   vars:
     arch_mapping:  # Map ansible architecture {{ ansible_architecture }} names to Docker's architecture names
       x86_64: amd64
@@ -32,7 +32,6 @@
     - name: Add Docker's official GPG key
       ansible.builtin.apt_key:
         url: https://download.docker.com/linux/ubuntu/gpg
-        keyring: /etc/apt/keyrings/docker.gpg
         state: present
 
     - name: Print architecture variables
